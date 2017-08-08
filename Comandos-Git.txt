@@ -6,7 +6,7 @@ git commit -m "Descripción breve de los cambios"
 git status: Visualiza el estado de los cambios
 git log: Visualiza los ultimos cambios
 git push -u origin master : Subo los cambios pendientes
-git pull -u origin master : traigo los cambios
+git pull -u origin master : traigo los cambios pendientes 
 
 
 PÚBLICO: (GITHUB)
