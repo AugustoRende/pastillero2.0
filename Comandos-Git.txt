@@ -5,6 +5,9 @@ git add . : Agregar el contenido o los cambios
 git commit -m "Descripción breve de los cambios"
 git status: Visualiza el estado de los cambios
 git log: Visualiza los ultimos cambios
+git push -u origin master : Subo los cambios pendientes
+git pull -u origin master : traigo los cambios
+
 
 PÚBLICO: (GITHUB)
 -------------------------------------------------
