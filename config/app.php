@@ -171,11 +171,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Pastillero\Providers\AppServiceProvider::class,
+        Pastillero\Providers\AuthServiceProvider::class,
+        // Pastillero\Providers\BroadcastServiceProvider::class,
+        Pastillero\Providers\EventServiceProvider::class,
+        Pastillero\Providers\RouteServiceProvider::class,
 
     ],
 

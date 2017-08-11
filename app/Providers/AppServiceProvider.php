@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Pastillero\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
