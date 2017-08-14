@@ -19,14 +19,14 @@ class CreateDoctorsTable extends Migration
             $table->string('code',50)->unique();
             $table->string('name',50);
             $table->string('last_name',50);
-            $table->string('email',50);->nullable()
+            $table->string('email',50)->nullable();
             $table->string('mobile',50)->nullable();
             $table->timestamps();
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('enabled')->default(1);
             $table->tinyInteger('visible')->default(1);
 
-            $table->integer('organization_id',11)->unsigned();
+            $table->integer('organization_id')->unsigned();
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade')->onUpdate('no action');
         });
     }

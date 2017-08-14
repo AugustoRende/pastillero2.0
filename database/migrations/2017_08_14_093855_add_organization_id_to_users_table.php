@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConfigsTable extends Migration
+class AddOrganizationIdToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,7 @@ class CreateConfigsTable extends Migration
      */
     public function up()
     {
-        Schema::create('configs', function (Blueprint $table) {
-            $table->increments('id');
-
-            $table->string('code',50)->unique();
-            $table->string('description',512);
-            $table->text('value',50000);
-            $table->timestamps();
-            $table->tinyInteger('active')->default(1);
-            $table->tinyInteger('enabled')->default(1);
-            $table->tinyInteger('visible')->default(1);
-
+        Schema::table('users', function (Blueprint $table) {
             $table->integer('organization_id')->unsigned();
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade')->onUpdate('no action');
         });
@@ -36,6 +26,9 @@ class CreateConfigsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('configs');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_organization_id_foreign');
+            $table->dropColumn('organization_id');
+        });
     }
 }

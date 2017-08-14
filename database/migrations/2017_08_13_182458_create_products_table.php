@@ -18,14 +18,14 @@ class CreateProductsTable extends Migration
 
             $table->string('code',50)->unique();
             $table->string('description',50);
-            $table->integer('dosage',11);
+            $table->integer('dosage');
             $table->timestamps();
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('enabled')->default(1);
             $table->tinyInteger('visible')->default(1);
-            $table->integer('order',11)->default(1);
+            $table->integer('order')->default(1);
 
-            $table->integer('organization_id',11)->unsigned();
+            $table->integer('organization_id')->unsigned();
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade')->onUpdate('no action');
         });
     }

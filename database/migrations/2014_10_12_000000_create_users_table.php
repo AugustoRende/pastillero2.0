@@ -17,16 +17,13 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('username',50)->unique();
             $table->string('password',300);
-            $table->string('email')->unique();
+            $table->string('email',50)->unique();
             $table->string('group',50);
             $table->rememberToken();
             $table->timestamps();
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('enabled')->default(1);
             $table->tinyInteger('visible')->default(1);
-
-            $table->integer('organization_id',11)->unsigned();
-            $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade')->onUpdate('no action');
         });
     }
 
