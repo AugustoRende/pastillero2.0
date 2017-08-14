@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateSkuProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,27 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('sku_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username',50)->unique();
-            $table->string('password',300);
-            $table->string('email')->unique();
-            $table->string('group',50);
-            $table->rememberToken();
+
+            $table->string('code',50)->unique();
             $table->timestamps();
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('enabled')->default(1);
             $table->tinyInteger('visible')->default(1);
 
+            $table->integer('doctor_id',11)->unsigned();
+            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade')->onUpdate('no action');
+           
+            $table->integer('product_id',11)->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('no action');
+            
+            $table->integer('patient_id',11)->unsigned();
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade')->onUpdate('no action');
+            
             $table->integer('organization_id',11)->unsigned();
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade')->onUpdate('no action');
+           
         });
     }
 
@@ -37,6 +44,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('sku_products');
     }
 }
