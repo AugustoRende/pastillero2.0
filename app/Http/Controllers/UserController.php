@@ -3,6 +3,9 @@
 namespace Pastillero\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Pastillero\User;
+use Session;
+use Redirect;
 
 class UserController extends Controller
 {
@@ -13,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        $users = User::All();
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -23,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $user = new User;
+        return view('user.create', compact('user'));
     }
 
     /**
@@ -34,7 +39,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = $request['user'];
+        User::create([
+            'username' => $user['username'],
+            'email' => $user['email'],
+            'password' => bcrypt($user['password']),
+            'group' => 'user',
+            'organization_id' => 1,
+            ]);
+
+        Session::flash('message','Usuario creado correctamente');
+        return Redirect::to('/user');
     }
 
     /**
@@ -56,7 +71,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('user.edit',['user'=>$user]);
     }
 
     /**
@@ -68,7 +84,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->fill($request->all());
+        $user->save();
+
+        Session::flash('message','Usuario Actualizado correctamente');
+        return Redirect::to('/user');
     }
 
     /**
@@ -79,6 +100,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        Session::flash('message','Usuario Eliminado correctamente');
+        return Redirect::to('/user');
     }
 }

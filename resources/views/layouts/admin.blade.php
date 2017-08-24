@@ -20,7 +20,7 @@
 </head>
 <body>
     <div id="app">
-        @include('layouts.navbar')
+        <!--TODO: Incluir navbar @ include('layouts.navbar')-->
 
         <div class="container">
             @yield('content')
