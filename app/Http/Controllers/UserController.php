@@ -3,6 +3,8 @@
 namespace Pastillero\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Pastillero\Http\Requests\UserCreateRequest;
+use Pastillero\Http\Requests\UserUpdateRequest;
 use Pastillero\User;
 use Session;
 use Redirect;
@@ -34,16 +36,15 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
-        $user = $request['user'];
         User::create([
-            'username' => $user['username'],
-            'email' => $user['email'],
-            'password' => bcrypt($user['password']),
+            'username' => $request['username'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
             'group' => 'user',
             'organization_id' => 1,
             ]);
