@@ -32,8 +32,6 @@
 		@endforeach
 	</table>
 
-
-
-
+	@include('pagination')
 
 @stop
