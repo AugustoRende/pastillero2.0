@@ -22,6 +22,7 @@ class CreateDoctorsTable extends Migration
             $table->string('email',50)->nullable();
             $table->string('mobile',50)->nullable();
             $table->timestamps();
+            $table->softDeletes();
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('enabled')->default(1);
             $table->tinyInteger('visible')->default(1);

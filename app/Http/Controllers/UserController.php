@@ -8,6 +8,7 @@ use Pastillero\Http\Requests\UserUpdateRequest;
 use Pastillero\User;
 use Session;
 use Redirect;
+use Illuminate\Routing\Route;
 
 class UserController extends Controller
 {
@@ -79,11 +80,11 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UserUpdateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         $user = User::find($id);
         $user->fill($request->all());
@@ -101,7 +102,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        //User::destroy($id);
+        $user = User::find($id);
+        $user->delete();
         Session::flash('message','Usuario Eliminado correctamente');
         return Redirect::to('/user');
     }

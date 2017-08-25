@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('description',50);
             $table->integer('dosage');
             $table->timestamps();
+            $table->softDeletes();
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('enabled')->default(1);
             $table->tinyInteger('visible')->default(1);

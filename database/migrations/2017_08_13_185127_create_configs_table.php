@@ -20,6 +20,7 @@ class CreateConfigsTable extends Migration
             $table->string('description',512);
             $table->text('value',50000);
             $table->timestamps();
+            $table->softDeletes();
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('enabled')->default(1);
             $table->tinyInteger('visible')->default(1);

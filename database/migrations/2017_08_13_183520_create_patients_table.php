@@ -23,6 +23,7 @@ class CreatePatientsTable extends Migration
             $table->dateTime('birth');
             $table->string('pathology',50);
             $table->timestamps();
+            $table->softDeletes();
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('enabled')->default(1);
             $table->tinyInteger('visible')->default(1);

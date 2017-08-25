@@ -18,6 +18,7 @@ class CreateSkuProductsTable extends Migration
 
             $table->string('code',50)->unique();
             $table->timestamps();
+            $table->softDeletes();
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('enabled')->default(1);
             $table->tinyInteger('visible')->default(1);

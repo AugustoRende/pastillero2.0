@@ -20,6 +20,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('name',50)->unique();
             $table->string('code_security',32)->default('');
             $table->timestamps();
+            $table->softDeletes();
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('enabled')->default(1);
             $table->tinyInteger('visible')->default(1);
