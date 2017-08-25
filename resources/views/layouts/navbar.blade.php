@@ -3,6 +3,18 @@
     <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>
+    <div class="flex-center position-ref full-height">
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @if (Auth::check())
+                    <a href="{{ url('/home') }}">Home</a>
+                @else
+                    <a href="{{ url('/login') }}">Login</a>
+                    <a href="{{ url('/register') }}">Register</a>
+                @endif
+            </div>
+        @endif
+    </div>
     <div class="navbar-collapse collapse pull-right" id="navbarCollapse" aria-expanded="false">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
