@@ -12,9 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return redirect()->guest(route('login'));
 });
-
 
 Route::resource('user', 'UserController');
 Auth::routes();

@@ -18,15 +18,54 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <style type="text/css">
         body{
-          background-image: url({{ asset('img/gplaypattern_grisB.png') }});
+          background-image: url({{ asset('images/background.jpg') }});
+        }
+
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
+
+        .links > a {
+            /*color: #636b6f;*/
+            color: black;
+            padding: 0 25px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .full-height {
+            height: 100vh;
+        }
+
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
-    <div id="app">
+     <div class="flex-center position-ref full-height">
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @if (Auth::check())
+                    <a href="{{ url('/home') }}">Home</a>
+                @else
+                    <a href="{{ url('/login') }}">Login</a>
+                    <a href="{{ url('/register') }}">Register</a>
+                @endif
+            </div>
+        @endif
 
-        <div class="container">
-            @yield('content')
+        <div id="app">
+
+            <div class="container">
+                @yield('content')
+            </div>
         </div>
     </div>
 

@@ -4,7 +4,6 @@
 
 @section('content')
 
-<h1>INDEX</h1>
 	<table class="table">
 		<thead>
 			<th>Nombre</th>
@@ -16,7 +15,7 @@
 			<th>{{$user->username}}</th>
 			<th>{{$user->email}}</th>
 			<th>
-				<a class="btn btn-sm btn-secondary" href="{{ route('user.edit', $user->id) }}">Editar</a>
+				<a class="btn btn-sm btn-secondary" href="{{ route('user.edit', $user->id) }}" style="width: 56.91px;">Editar</a>
               	<form action="{{ route('user.destroy', $user->id) }}" method="POST">
                 	{{ method_field('DELETE') }}
                 	{{ csrf_field() }}
