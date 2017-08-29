@@ -14,7 +14,10 @@
                     <a class="nav-link" href="{{ url('/user') }}">Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Administradores</a>
+                    <a class="nav-link" href="{{ url('/apm') }}">APM</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/sku_product') }}">Códigos QR</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

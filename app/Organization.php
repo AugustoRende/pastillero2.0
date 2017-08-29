@@ -54,6 +54,14 @@ class Organization extends Model
         return $this->hasMany('Pastillero\Config');
     }
 
+    /**
+     * Get the configs for the organization.
+     */
+    public function apms()
+    {
+        return $this->hasMany('Pastillero\Apm');
+    }
+
 
     /**
      * The attributes that are mass assignable.

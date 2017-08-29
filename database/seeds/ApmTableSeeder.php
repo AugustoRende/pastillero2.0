@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Pastillero\Sku_product;
+use Pastillero\Apm;
 
-class SkuProductsTableSeeder extends Seeder
+class ApmTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class SkuProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Sku_product::class, 10)->create();
+        factory(Apm::class, 3)->create();
     }
 }

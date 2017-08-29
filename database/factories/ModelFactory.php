@@ -25,6 +25,15 @@ $factory->define(Pastillero\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(Pastillero\Apm::class, function (Faker\Generator $faker) {
+
+    return [
+        'code' => str_random(10),
+        'description' => $faker->word(),
+        'organization_id' => 1,
+    ];
+});
+
 $factory->define(Pastillero\Doctor::class, function (Faker\Generator $faker) {
 
     return [
@@ -34,6 +43,7 @@ $factory->define(Pastillero\Doctor::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'mobile' => $faker->phoneNumber,
         'organization_id' => 1,
+        'apm_id' => 1,
     ];
 });
 
