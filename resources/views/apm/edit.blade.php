@@ -2,11 +2,11 @@
 
 @section('content')
 
-	<form action="{{ route('user.update', $user->id) }}" method="POST">
+	<form action="{{ route('apm.update', $apm->id) }}" method="POST">
 		<input name="_method" type="hidden" value="PUT">
         {{ csrf_field() }}
         
-        @include('user.form')
+        @include('apm.form')
 
 	</form>
 

@@ -75,7 +75,8 @@ class ApmController extends Controller
      */
     public function edit($id)
     {
-        //
+        $apm = Apm::find($id);
+        return view('apm.edit',['apm'=>$apm]);
     }
 
     /**
@@ -87,8 +88,12 @@ class ApmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $apm = Apm::find($id);
+        $apm->fill($request->all());
+        $apm->save();
+
+        Session::flash('message','Usuario Actualizado correctamente');
+        return Redirect::to('/apm');    }
 
     /**
      * Remove the specified resource from storage.
@@ -98,6 +103,9 @@ class ApmController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $apm = Apm::find($id);
+        $apm->delete();
+        Session::flash('message','APM Eliminado correctamente');
+        return Redirect::to('/apm');
     }
 }
