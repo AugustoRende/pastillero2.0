@@ -3,15 +3,16 @@
 namespace Pastillero\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Pastillero\Http\Requests\ApmCreateRequest;
-use Pastillero\Http\Requests\ApmUpdateRequest;
-use Pastillero\Apm;
+use Pastillero\Http\Requests\DoctorCreateRequest;
+use Pastillero\Http\Requests\DoctorUpdateRequest;
+use Pastillero\Doctor;
 use Session;
 use Redirect;
 use Auth;
 use Illuminate\Routing\Route;
 
-class ApmController extends Controller
+
+class DoctorController extends Controller
 {
     public function __construct()
     {
@@ -25,8 +26,8 @@ class ApmController extends Controller
      */
     public function index()
     {
-        $apms = Apm::paginate(10);
-        return view('apm.index', compact('apms'));
+        $doctors = Doctor::paginate(10);
+        return view('doctor.index', compact('doctors'));
     }
 
     /**
@@ -36,8 +37,9 @@ class ApmController extends Controller
      */
     public function create()
     {
-        $apm = new Apm;
-        return view('apm.create', compact('apm'));
+        $doctor = new Doctor;
+        $apms = Auth::user()->organization->apms;
+        return view('doctor.create', compact('doctor'), compact('apms'));
     }
 
     /**
@@ -46,14 +48,14 @@ class ApmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ApmCreateRequest $request)
+    public function store(DoctorCreateRequest $request)
     {
         $request['organization_id'] = Auth::user()->organization_id;
 
-        Apm::create($request->all());
+        Doctor::create($request->all());
 
-        Session::flash('message','APM creado correctamente');
-        return Redirect::to('/apm');
+        Session::flash('message','Médico creado correctamente');
+        return Redirect::to('/doctor');    
     }
 
     /**
@@ -75,8 +77,9 @@ class ApmController extends Controller
      */
     public function edit($id)
     {
-        $apm = Apm::find($id);
-        return view('apm.edit',['apm'=>$apm]);
+        $doctor = Doctor::find($id);
+        $apms = Auth::user()->organization->apms;
+        return view('doctor.edit',['doctor'=>$doctor, 'apms'=>$apms]);
     }
 
     /**
@@ -86,14 +89,15 @@ class ApmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DoctorUpdateRequest $request, $id)
     {
-        $apm = Apm::find($id);
-        $apm->fill($request->all());
-        $apm->save();
+        $doctor = Doctor::find($id);
+        $doctor->fill($request->all());
+        $doctor->save();
 
-        Session::flash('message','AMP Actualizado correctamente');
-        return Redirect::to('/apm');    }
+        Session::flash('message','Médico Actualizado correctamente');
+        return Redirect::to('/doctor');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -103,9 +107,9 @@ class ApmController extends Controller
      */
     public function destroy($id)
     {
-        $apm = Apm::find($id);
-        $apm->delete();
-        Session::flash('message','APM Eliminado correctamente');
-        return Redirect::to('/apm');
+        $doctor = Doctor::find($id);
+        $doctor->delete();
+        Session::flash('message','Médico Eliminado correctamente');
+        return Redirect::to('/doctor');
     }
 }

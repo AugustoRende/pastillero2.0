@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::resource('user', 'UserController');
 Route::resource('apm', 'ApmController');
+Route::resource('doctor', 'DoctorController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
