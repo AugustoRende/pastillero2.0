@@ -26,6 +26,7 @@
 <div class="form-group {{ $errors->has('apm_id') ? 'has-danger' :'' }}">
     <label for="">APM</label>
     <select class="form-control" name="apm_id" class="form-control" value="{{ old('doctor.apm_id') ?: $doctor->apm_id }}">
+	    <option value=""></option>
 		@foreach($apms as $apm)
 	    <option value="{{$apm->id}}" {{ $doctor->apm_id == $apm->id ? 'selected' : '' }}>
 	    	{{$apm->description.' ('.$apm->code.')'}}

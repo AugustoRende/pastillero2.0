@@ -11,10 +11,13 @@
                     <a class="nav-link" href="{{ url('/doctor') }}">Médicos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/user') }}">Usuarios</a>
+                    <a class="nav-link" href="{{ url('/apm') }}">APM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/apm') }}">APM</a>
+                    <a class="nav-link" href="{{ url('/patient') }}">Pacientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/user') }}">Usuarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/sku_product') }}">Códigos QR</a>
