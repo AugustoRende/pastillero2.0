@@ -46,7 +46,7 @@ class Sku_product extends Model
      * @var array
      */
     protected $fillable = [
-        'code', 'active', 'visible', 'enabled','order',
+        'code', 'active', 'visible', 'enabled','order', 'organization_id', 'doctor_id', 'product_id', 'patient_id',
     ];
 
 

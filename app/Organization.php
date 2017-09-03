@@ -27,7 +27,7 @@ class Organization extends Model
      */
     public function products()
     {
-        return $this->hasMany('Pastillero\Doctor');
+        return $this->hasMany('Pastillero\Product');
     }
 
     /**

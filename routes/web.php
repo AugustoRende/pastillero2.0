@@ -20,6 +20,7 @@ Route::resource('user', 'UserController');
 Route::resource('apm', 'ApmController');
 Route::resource('doctor', 'DoctorController');
 Route::resource('patient', 'PatientController');
+Route::resource('sku_product', 'SkuProductController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
