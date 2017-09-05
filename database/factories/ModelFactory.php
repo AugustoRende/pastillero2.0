@@ -52,12 +52,14 @@ $factory->define(Pastillero\Patient::class, function (Faker\Generator $faker) {
     return [
         'username' => $faker->unique()->safeEmail,
         'password' => bcrypt('1234'),
+        'email' => $faker->unique()->safeEmail,
         'name' => $faker->name,
         'last_name' => $faker->lastname,
         'birth' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'pathology' => 'ASMA',
         'organization_id' => 1,
         'doctor_id' => 1,
+        'remember_token' => str_random(10),
         //TODO: ASIGNARLE UN DOCTOR DE LOS EXISTENTES
     ];
 });
