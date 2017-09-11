@@ -1,4 +1,10 @@
-<?php $cant_page =  floor($items->total()/$items->perPage())+1 ?>
+<?php 
+	if (is_int($items->total()/$items->perPage())) {
+		$cant_page = $items->total()/$items->perPage();
+	} else {
+		$cant_page = floor($items->total()/$items->perPage())+1; 
+	}
+?>
 <nav aria-label="pagination">
   	<ul class="pagination pagination-sm justify-content-center">
   		@if($items->currentPage() == 1)

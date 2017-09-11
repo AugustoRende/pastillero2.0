@@ -29,6 +29,8 @@ class PatientCreateRequest extends FormRequest
             'last_name' => 'required',
             'birth' => 'date',
             'password' => 'required',
+            'pathology' => 'required',
+            'doctor_id' => 'required|exists:doctors,id',
         ];
     }
 }

@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ config('app.name') }}</title>
+    <title>CASSARÁ</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -12,16 +13,22 @@
         /* Show it is fixed to the top */
         body {
           padding-top: 4.5rem;
+          padding-bottom: 1rem;
           background-image: url({{ asset('images/fondo.png')}});
         }
 
         .container {
           padding: 10px;
-          background-color: white;
+          background-color: #f9f9f9;
+          border-radius: 5px;
         }
 
         .menu{
           background-color: #2972C6;
+        }
+
+        .table td {
+          padding: 0.35rem;
         }
     </style>
   </head>
@@ -31,9 +38,9 @@
               <div class="container">
                 @include('layouts.navbar')
 
-                <div class="container">
+                <!--div class="container"-->
                     @yield('content')
-                </div>
+                <!--/div-->
               </div>
           </div>
         </section>

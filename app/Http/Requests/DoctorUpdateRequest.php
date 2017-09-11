@@ -29,6 +29,7 @@ class DoctorUpdateRequest extends FormRequest
             'last_name' => 'required',
             // 'email' => 'email|unique:doctors',
             // 'mobile' => 'integer',
+            'apm_id' => 'required|exists:apms,id',
         ];
     }
 }

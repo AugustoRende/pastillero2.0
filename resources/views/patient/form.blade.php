@@ -21,21 +21,23 @@
 <div class="form-group {{ $errors->has('pathology') ? 'has-danger' :'' }}">
     <label for="">Patología</label>
     <select class="form-control" name="pathology" class="form-control" value="{{ old('patient.pathology') ?: $patient->pathology }}">
-	    <option value=""></option>
+	    <option value="">Seleccione una Patología</option>
 	    <option value="ASMA" {{ $patient->pathology == 'ASMA' ? 'selected' : '' }}>ASMA</option>
 	    <option value="EPOC" {{ $patient->pathology == 'EPOC' ? 'selected' : '' }}>EPOC</option>
     </select>
+    <div class="form-control-feedback">{{ $errors->first('pathology') }}</div>
 </div>
 <div class="form-group {{ $errors->has('doctor_id') ? 'has-danger' :'' }}">
     <label for="">Médico</label>
     <select class="form-control" name="doctor_id" class="form-control" value="{{ old('patient.doctor_id') ?: $patient->doctor_id }}">
-	    <option value=""></option>
+	    <option value="">Seleccione un Médico</option>
 		@foreach($doctors as $doctor)
 	    <option value="{{$doctor->id}}" {{ $patient->doctor_id == $doctor->id ? 'selected' : '' }}>
 	    	{{$doctor->last_name.', '.$doctor->name}}
     	</option>
 	    @endforeach
     </select>
+    <div class="form-control-feedback">{{ $errors->first('doctor_id') }}</div>
 </div>
 <div class="form-group {{ $errors->has('password') ? 'has-danger' :'' }}">
 	<label for="">Contraseña</label>

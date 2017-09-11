@@ -25,9 +25,9 @@ class SkuProductCreateRequest extends FormRequest
     {
         return [
             'code' => 'required',
-            'doctor_id' => 'required',
-            'patient_id' => 'required',
-            'product_id' => 'required',
+            'doctor_id' => 'required|exists:doctors,id',
+            'patient_id' => 'required|exists:patients,id',
+            'product_id' => 'required|exists:products,id',
         ];
     }
 }

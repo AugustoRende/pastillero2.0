@@ -20,18 +20,19 @@
 </div>
 <div class="form-group {{ $errors->has('mobile') ? 'has-danger' :'' }}">
 	<label for="">Teléfono</label>
-	<input type="text" name="mobile" class="form-control" value="{{ old('doctor.mobile') ?: $doctor->mobile }}" placeholder="Ingrese la Matrícula"></input>
+	<input type="text" name="mobile" class="form-control" value="{{ old('doctor.mobile') ?: $doctor->mobile }}" placeholder="Ingrese el Teléfono"></input>
     <div class="form-control-feedback">{{ $errors->first('mobile') }}</div>
 </div>
 <div class="form-group {{ $errors->has('apm_id') ? 'has-danger' :'' }}">
     <label for="">APM</label>
     <select class="form-control" name="apm_id" class="form-control" value="{{ old('doctor.apm_id') ?: $doctor->apm_id }}">
-	    <option value=""></option>
+	    <option value="0">Seleccione un APM</option>
 		@foreach($apms as $apm)
 	    <option value="{{$apm->id}}" {{ $doctor->apm_id == $apm->id ? 'selected' : '' }}>
 	    	{{$apm->description.' ('.$apm->code.')'}}
     	</option>
 	    @endforeach
     </select>
+    <div class="form-control-feedback">{{ $errors->first('apm_id') }}</div>
 </div>
 <button type="submit" class="btn btn-primary">Guardar</button>
