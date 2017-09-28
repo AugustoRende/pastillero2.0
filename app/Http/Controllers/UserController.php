@@ -8,6 +8,7 @@ use Pastillero\Http\Requests\UserUpdateRequest;
 use Pastillero\User;
 use Session;
 use Redirect;
+use Auth;
 use Illuminate\Routing\Route;
 
 class UserController extends Controller

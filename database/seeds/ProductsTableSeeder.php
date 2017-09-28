@@ -12,6 +12,10 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Product::class, 3)->create();
+        //factory(Product::class, 3)->create();
+        Product::create(['code' => '00001','description' => 'Maxivent','dosage' => '120']);
+        Product::create(['code' => '00002','description' => 'Maxivent','dosage' => '60']);
+        Product::create(['code' => '00003','description' => 'Otro','dosage' => '120']);
+        Product::create(['code' => '00004','description' => 'Otro','dosage' => '60']);
     }
 }

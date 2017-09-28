@@ -12,6 +12,6 @@ class SkuProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Sku_product::class, 10)->create();
+        factory(Sku_product::class, 5)->create();
     }
 }

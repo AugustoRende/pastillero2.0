@@ -14,7 +14,7 @@ class AddApmIdToDoctorTable extends Migration
     public function up()
     {
         Schema::table('doctors', function (Blueprint $table) {
-            $table->integer('apm_id')->unsigned();
+            $table->integer('apm_id')->unsigned()->default(1);
             $table->foreign('apm_id')->references('id')->on('apms')->onDelete('cascade')->onUpdate('no action');
         });
     }
