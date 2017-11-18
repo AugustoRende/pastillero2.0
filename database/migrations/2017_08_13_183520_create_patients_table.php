@@ -18,8 +18,9 @@ class CreatePatientsTable extends Migration
 
             $table->string('username',50)->unique();
             $table->string('password',300);
-            $table->string('name',50);
-            $table->string('last_name',50);
+            $table->string('name',50)->default(null);
+            $table->string('last_name',50)->default(null);
+            $table->string('gender',10)->default(null);
             $table->dateTime('birth');
             $table->string('pathology',50);
             $table->timestamps();
