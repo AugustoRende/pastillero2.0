@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return redirect()->guest(route('login'));
 });
+
+Route::resource('user', 'UserController');
+Route::resource('apm', 'ApmController');
+Route::resource('doctor', 'DoctorController');
+Route::resource('patient', 'PatientController');
+Route::resource('sku_product', 'SkuProductController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('logout', 'LoginController@logout');

@@ -16,9 +16,72 @@ $factory->define(Pastillero\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
+        'username' => $faker->name,
+        'password' => $password ?: $password = bcrypt('123456'),
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'group' => 'user',
         'remember_token' => str_random(10),
+        'organization_id' => 1,
     ];
 });
+
+$factory->define(Pastillero\Apm::class, function (Faker\Generator $faker) {
+
+    return [
+        'code' => str_random(10),
+        'description' => $faker->word(),
+        'organization_id' => 1,
+    ];
+});
+
+$factory->define(Pastillero\Doctor::class, function (Faker\Generator $faker) {
+
+    return [
+        'code' => str_random(10),
+        'name' => $faker->firstName,
+        'last_name' => $faker->lastname,
+        'email' => $faker->unique()->safeEmail,
+        'mobile' => $faker->phoneNumber,
+        'organization_id' => 1,
+        'apm_id' => 1,
+    ];
+});
+
+$factory->define(Pastillero\Patient::class, function (Faker\Generator $faker) {
+
+    return [
+        'username' => $faker->unique()->safeEmail,
+        'password' => bcrypt('1234'),
+        'email' => $faker->unique()->safeEmail,
+        'name' => $faker->name,
+        'last_name' => $faker->lastname,
+        'birth' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'pathology' => 'ASMA',
+        'organization_id' => 1,
+        'doctor_id' => 1,
+        'remember_token' => str_random(10),
+        //TODO: ASIGNARLE UN DOCTOR DE LOS EXISTENTES
+    ];
+});
+
+$factory->define(Pastillero\Product::class, function (Faker\Generator $faker) {
+
+    return [
+        'code' => str_random(10),
+        'description' => $faker->word(),
+        'dosage' => 120,
+        'organization_id' => 1,
+    ];
+});
+
+$factory->define(Pastillero\Sku_product::class, function (Faker\Generator $faker) {
+
+    return [
+        'code' => $faker->isbn13(),
+        'organization_id' => 1,
+        'doctor_id' => 1,
+        'product_id' => 1,
+        'patient_id' => 1,
+    ];
+});
+
