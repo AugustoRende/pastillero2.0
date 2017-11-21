@@ -3,25 +3,25 @@
     <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand" href="{{ url('/') }}">CASSARÁ</a>
+    <a class="navbar-brand" href="{{ url('/') }}">PRESSPART</a>
     
     <div class="navbar-collapse collapse pull-right" id="navbarCollapse" aria-expanded="false">
         <ul class="navbar-nav mr-auto">
             @if (Auth::check())
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/doctor') }}">Médicos</a>
-                </li>
-                <li class="nav-item">
+                <!--li class="nav-item">
+                    <a class="nav-link" href="{{ url('/doctor') }}">Doctors</a>
+                </li-->
+                <!--li class="nav-item">
                     <a class="nav-link" href="{{ url('/apm') }}">APM</a>
+                </li-->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/patient') }}">Patients</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/patient') }}">Pacientes</a>
+                    <a class="nav-link" href="{{ url('/user') }}">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/user') }}">Usuarios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/sku_product') }}">Códigos QR</a>
+                    <a class="nav-link" href="{{ url('/sku_product') }}">QR Codes</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

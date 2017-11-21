@@ -27,10 +27,11 @@ class PatientCreateRequest extends FormRequest
             'username' => 'email|required|unique:patients',
             'name' => 'required',
             'last_name' => 'required',
+            'gender' => 'required',
             'birth' => 'date',
             'password' => 'required',
             'pathology' => 'required',
-            'doctor_id' => 'required|exists:doctors,id',
+            //'doctor_id' => 'required|exists:doctors,id',
         ];
     }
 }

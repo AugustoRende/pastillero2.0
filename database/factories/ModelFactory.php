@@ -57,7 +57,7 @@ $factory->define(Pastillero\Patient::class, function (Faker\Generator $faker) {
         'last_name' => $faker->lastname,
         'gender' => 'Male',
         'birth' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'pathology' => 'ASMA',
+        'pathology' => 'ASTHMA',
         'organization_id' => 1,
         'doctor_id' => 1,
         'remember_token' => str_random(10),

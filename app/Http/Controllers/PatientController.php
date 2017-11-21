@@ -50,6 +50,9 @@ class PatientController extends Controller
     public function store(PatientCreateRequest $request)
     {
         $request['organization_id'] = Auth::user()->organization_id;
+        //ARE 20/11/2017 - Encriptación de la password
+        $request['password'] = app('hash')->make($request->input('password'));
+        $request['email'] = $request['username'];
 
         Patient::create($request->all());
 
@@ -91,6 +94,11 @@ class PatientController extends Controller
     public function update(PatientUpdateRequest $request, $id)
     {
         $patient = Patient::find($id);
+
+        //ARE 20/11/2017 - Encriptación de la password
+        $request['password'] = app('hash')->make($request->input('password'));
+        $request['email'] = $request['username'];
+
         $patient->fill($request->all());
         $patient->save();
 
